@@ -1,6 +1,6 @@
 # kubernetes
 
-my first steps with kubernetes
+Simple nginx web server
 
 ```sh
 # Build the docker image
