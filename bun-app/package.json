@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "bun run --watch src/index.ts",
     "start": "bun run src/index.ts",
-    "docker:build": "docker build -t patwoz/k3s-bun-app .",
-    "docker:run": "docker run -p 3000:3000 patwoz/k3s-bun-app"
+    "docker:build": "docker build -t localhost:5000/k3s-bun-app .",
+    "docker:run": "docker run -p 3000:3000 localhost:5000/k3s-bun-app",
+    "docker:push": "docker push localhost:5000/k3s-bun-app"
   },
   "devDependencies": {
     "@types/bun": "latest",
