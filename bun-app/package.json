@@ -1,0 +1,27 @@
+{
+  "name": "bun-app",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "docker:build": "docker build -t patwoz/k3s-bun-app .",
+    "docker:run": "docker run -p 3000:3000 patwoz/k3s-bun-app"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "^3.5.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "elysia": "^1.2.25"
+  }
+}
