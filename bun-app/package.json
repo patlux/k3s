@@ -8,7 +8,8 @@
     "start": "bun run src/index.ts",
     "docker:build": "docker build -t localhost:5000/k3s-bun-app .",
     "docker:run": "docker run -p 3000:3000 localhost:5000/k3s-bun-app",
-    "docker:push": "docker push localhost:5000/k3s-bun-app"
+    "docker:push": "docker push localhost:5000/k3s-bun-app",
+    "docker": "bun docker:build && bun docker:push"
   },
   "devDependencies": {
     "@types/bun": "latest",

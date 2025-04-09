@@ -11,12 +11,18 @@ spec:
     metadata:
       labels:
         app: bun-app
+      annotations:
+        forceRestart: "{{ .Values.forceRestart }}"
     spec:
       containers:
         - name: bun-app
           image: localhost:5000/k3s-bun-app
           ports:
           - containerPort: 3000
+          env:
+          - name: DATABASE_URL
+            value: postgres://{{ $.Values.global.postgresql.auth.username }}:{{ $.Values.global.postgresql.auth.password }}@{{ .Release.Name }}-postgresql:5432/{{ $.Values.global.postgresql.auth.database }}
+
 ---
 apiVersion: v1
 kind: Service

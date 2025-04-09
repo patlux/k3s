@@ -16,8 +16,8 @@ bun dev
 
 ```sh
 # make sure you started the local docker registry as described in ../README.md
-$ docker:build
-$ docker:push
+$ bun docker:build
+$ bun docker:push
 
 $ helm install bun-app ./infra
 $ kubectl get services
