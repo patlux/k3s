@@ -29,4 +29,7 @@ kubectl describe ingress
 # copy the ip and insert it into your /etc/hosts
 198.19.249.27 bun-app.local
 # now open http://bun-app.local
+
+# Re-install
+helm upgrade bun-app . --reuse-values --set-string forceRestart=$(date +%s)
 ```
