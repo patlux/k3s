@@ -17,7 +17,12 @@ bun dev
 ```sh
 # make sure you started the local docker registry as described in ../README.md
 $ bun docker:build
+
+# if you use a docker registry
 $ bun docker:push
+# if you import it manually
+# k3d
+$ k3d image import localhost:5000/k3s-bun-app
 
 $ helm install bun-app ./infra
 $ kubectl get services

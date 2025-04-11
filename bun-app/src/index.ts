@@ -10,9 +10,13 @@ CREATE TABLE IF NOT EXISTS users(
 );
 `
 
+console.log({ DATABASE_URL: process.env.DATABASE_URL })
+const users = await sql`SELECT * FROM users;`
+console.log({ users })
+
 export const app = new Elysia()
   .get('', () => {
-    return 'Hello World 3'
+    return 'Hello World 6'
   })
   .get('/users', async () => {
     const result = await sql`SELECT * FROM users;`

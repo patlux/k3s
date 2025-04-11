@@ -17,6 +17,7 @@ spec:
       containers:
         - name: bun-app
           image: localhost:5000/k3s-bun-app
+          imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 3000
           env:
@@ -35,18 +36,14 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
----    
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: bun-app-http
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+  name: bun-app-ingress
 spec:
-  ingressClassName: traefik
   rules:
-    - host: bun-app.local
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
