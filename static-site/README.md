@@ -5,13 +5,14 @@ Simple nginx web server
 ```sh
 # Build the docker image
 make docker
-# Imports the docker images into k3s containerd
-make import
+# Imports the docker images
+make import # k3s on linux, k3d on mac
 make deploy
 
-make svc # grep internal ip
-curl http://<host>:3346
+# or all in one:
+make all
 
-# reach from outside
-curl http://static-site.116.203.217.202.sslip.io
+# get address
+kubectl get ingress
+curl http://<address>
 ```
