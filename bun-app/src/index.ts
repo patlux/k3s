@@ -1,6 +1,8 @@
 import Elysia, { t } from 'elysia'
 import { sql } from 'bun'
 
+console.log({ DATABASE_URL: process.env.DATABASE_URL })
+
 await sql`
 CREATE TABLE IF NOT EXISTS users(
   id SERIAL PRIMARY KEY,
@@ -10,13 +12,14 @@ CREATE TABLE IF NOT EXISTS users(
 );
 `
 
-console.log({ DATABASE_URL: process.env.DATABASE_URL })
-const users = await sql`SELECT * FROM users;`
-console.log({ users })
-
 export const app = new Elysia()
   .get('', () => {
     return 'Hello World 6'
+  })
+  .get('/health', async () => {
+    console.log(`>> /health`)
+    await sql`SELECT * FROM users;`
+    return { ok: true }
   })
   .get('/users', async () => {
     const result = await sql`SELECT * FROM users;`
