@@ -48,7 +48,8 @@ metadata:
   name: bun-app-ingress
 spec:
   rules:
-    - http:
+    - host: bun-app.local
+      http:
         paths:
           - path: /
             pathType: Prefix

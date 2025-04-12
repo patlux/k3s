@@ -1,0 +1,4 @@
+Hello!
+
+You successfully installed bun-app.
+

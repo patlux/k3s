@@ -1,0 +1,19 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    additionalArguments:
+      - "--metrics.prometheus=true"
+      - "--metrics.prometheus.addEntryPointsLabels=true"
+      - "--metrics.prometheus.addServicesLabels=true"
+      - "--metrics.prometheus.entryPoint=metrics"
+      - "--entrypoints.metrics.address=:9102"
+    ports:
+      metrics:
+        port: 9102
+        expose: true
+        exposedPort: 9102
+        protocol: TCP
